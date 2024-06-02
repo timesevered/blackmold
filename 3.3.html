@@ -11,17 +11,6 @@
         font-family: Helvetica, Arial, sans-serif; /* Change font to Helvetica or Arial */
       }
 
-      .hyperobject {
-        margin-top: 5%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .hyperobject img {
-        width: 60%; /* Adjust image width as needed */
-      }
-
       .circle {
         position: fixed;
         top: 0;
@@ -41,7 +30,7 @@
         left: 50%;
         transform: translateX(-50%);
         width: 80vw; /* Adjust width as needed */
-        height: 10vh; /* Adjust height as needed */
+        height: 20vh; /* Adjust height as needed */
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -51,7 +40,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        font-size: 3vh; /* Responsive text size */
+        font-size: 4vw; /* Responsive text size */
         color: black; /* Text color to ensure readability over image */
       }
 
@@ -62,7 +51,7 @@
       }
 
       .rectangle:hover a {
-        font-size: 3.3vw; /* Increase font size on hover */
+        font-size: 4vw; /* Increase font size on hover */
         text-transform: uppercase; /* All caps on hover */
         color: black; /* Change text color on hover */
         animation: breathe 2s ease-in-out infinite; /* Breathing animation */
@@ -100,12 +89,15 @@
       @media (max-width: 1080px) {
         .rectangle {
           margin-top: 7vh;
-          margin: 4vh 0; /* Adjusted margin for mobile-sized screens */
+          margin: 2vh 0; /* Adjusted margin for mobile-sized screens */
         }
       }
 
+      .code {
+        font-size: 2vw;
+      }
       .footer {
-         font-size: 3.3vw;
+         font-size: 4vw;
          position: fixed;
          left: 0;
          bottom: 0;
@@ -116,7 +108,6 @@
     </style>
   </head>
   <body>
-    <div class="hyperobject"><img src="360.gif"></div>
     <div class="circle"></div>
     <div class="rectangle kick"><a href="https://kick.com/hyperobject" target="_blank">kick</a></div>
     <div class="rectangle x"><a href="https://x.com/____hyperobject" target="_blank">X</a></div>
@@ -124,9 +115,10 @@
     <div class="rectangle youtube"><a href="https://soundcloud.com/hyperobjectivityblackmold" target="_blank">soundcloud</a></div>
     <div class="rectangle youtube"><a href="https://www.instagram.com/hyperobjectivity/" target="_blank">ig</a></div>
     <div class="rectangle contact"><a href="mailto:hyperobjectivityblackmold@gmail.com" target="_blank">contact</a></div>
-    <div class="rectangle"></div>
+    <div class="rectangle contact"><a href="https://www.instagram.com/hyperobjectivity/" target="_blank">gimme monies</a></div>
 
-    <div class="footer"><p>2024 © hyperobject</p></div>
+    <div class="footer"><div>2024 © hyperobject</div>
+    <div class="code">coded by: hyperobject x ChatGPT<br><br></div></div>
 
   </body>
 </html>
