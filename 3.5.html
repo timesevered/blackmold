@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        overflow-y: auto;
+        margin: 0;
+        background-color: #FAF9F6;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif; /* Change font to Helvetica or Arial */
+      }
+
+      .circle {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20vw;
+        height: 0;
+        padding-bottom: 20vw;
+        border-radius: 50%;
+        background-color: #FAF9F6;
+        z-index: -1;
+        animation: circleMove 4s linear infinite; /* Adjust animation duration as needed */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Low contrast drop shadow for circles */
+      }
+
+      .rectangle {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80vw; /* Adjust width as needed */
+        height: 20vh; /* Adjust height as needed */
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 1;
+        margin: 7vh 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 4vw; /* Responsive text size */
+        color: black; /* Text color to ensure readability over image */
+      }
+
+      .rectangle a {
+        text-decoration: none;
+        color: black;
+        transition: all 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      .rectangle:hover a {
+        font-size: 4vw; /* Increase font size on hover */
+        text-transform: uppercase; /* All caps on hover */
+        color: black; /* Change text color on hover */
+        animation: breathe 2s ease-in-out infinite; /* Breathing animation */
+      }
+
+      @keyframes breathe {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+
+      .kick {
+        background-image: url('oval.png');
+      }
+
+      .x {
+        background-image: url('oval.png');
+      }
+
+      .youtube {
+        background-image: url('oval.png');
+      }
+
+      .contact {
+        background-image: url('oval.png');
+      }
+
+      .tip {
+      background-image: url('oval.png');
+      margin-bottom: 10%;
+    }
+      @keyframes circleMove {
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(50vw, 50vh); }
+        50% { transform: translate(100vw, 0); }
+        75% { transform: translate(50vw, -50vh); }
+        100% { transform: translate(0, 0); }
+      }
+
+      @media (max-width: 1080px) {
+        .rectangle {
+          margin-top: 7vh;
+          margin: 2vh 0; /* Adjusted margin for mobile-sized screens */
+        }
+      }
+
+      .code {
+        font-size: 2vw;
+      }
+      .footer {
+         font-size: 4vw;
+         position: fixed;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+         color: black;
+         text-align: center;
+      }
+
+      .popup {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      /* The actual popup */
+      .popup .popuptext {
+        visibility: hidden;
+        width: 5vh;
+        background-color: none;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%); /* Center the popup horizontally */
+      }
+
+      /* Popup arrow */
+      .popup .popuptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+      }
+
+      /* Toggle this class - hide and show the popup */
+      .popup .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+
+      /* Add animation (fade in the popup) */
+      @-webkit-keyframes fadeIn {
+        from {opacity: 0;} 
+        to {opacity: 1;}
+      }
+
+      @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity:1 ;}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="circle"></div>
+    <div class="rectangle kick"><a href="https://kick.com/hyperobject" target="_blank">kick</a></div>
+    <div class="rectangle x"><a href="https://x.com/____hyperobject" target="_blank">X</a></div>
+    <div class="rectangle youtube"><a href="https://www.youtube.com/@____hyperobject" target="_blank">youtube</a></div>
+    <div class="rectangle youtube"><a href="https://soundcloud.com/hyperobjectivityblackmold" target="_blank">soundcloud</a></div>
+    <div class="rectangle youtube"><a href="https://www.instagram.com/hyperobjectivity/" target="_blank">ig</a></div>
+    <div class="rectangle contact"><a href="mailto:hyperobjectivityblackmold@gmail.com" target="_blank">contact</a></div>
+
+<div class="rectangle tip">
+    <div class="popup" onclick="myFunction()">
+      gimme monies
+      <span class="popuptext" id="myPopup">
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+        <stripe-buy-button buy-button-id="buy_btn_1PN2SCGIw4d3ZUvbm2HAzfkb" publishable-key="pk_live_51PN21QGIw4d3ZUvbj0F07tJ5s3NS79vhsGbCHV6EKgyIHBjBfyB7IXDQUJlpGlwJH3vesQ8cSPTVa1BgyIou3kU90044mM1MlP"></stripe-buy-button>
+      </span>
+    </div></div>
+
+    <script>
+// When the user clicks on div, open the popup
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script>
+
+<div class="footer">
+  <div>2024 © hyperobject</div>
+  <div class="code">coded by: hyperobject x ChatGPT<br><br></div>
+</div>
+
+</body>
+</html>
+
