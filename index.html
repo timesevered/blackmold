@@ -1,129 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      body {
-        overflow-y: auto;
-        margin: 0;
-        background-color: #FAF9F6;
-        padding: 0;
-        font-family: Helvetica, Arial, sans-serif; /* Change font to Helvetica or Arial */
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hyperobject</title>
+  <style>
+    @font-face {
+   font-family: soehne;
+   src: url(soehne-web-buch.woff);
+  }
 
-      .circle {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 20vw;
-        height: 0;
-        padding-bottom: 20vw;
-        border-radius: 50%;
-        background-color: #FAF9F6;
-        z-index: -1;
-        animation: circleMove 4s linear infinite; /* Adjust animation duration as needed */
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Low contrast drop shadow for circles */
-      }
+    body {
+      background: radial-gradient(circle, black 10%, #faf9f6);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: soehne, sans-serif;
+      perspective: 1000px;
+    }
 
-      .rectangle {
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80vw; /* Adjust width as needed */
-        height: 20vh; /* Adjust height as needed */
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        z-index: 1;
-        margin: 7vh 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: 4vw; /* Responsive text size */
-        color: black; /* Text color to ensure readability over image */
-      }
+    .circle-container {
+      position: relative;
+      width: 80vw; /* Adjusted width for responsiveness */
+      height: 80vw; /* Adjusted height for responsiveness */
+      max-width: 800px; /* Added max-width for screens larger than 800px */
+      max-height: 800px; /* Added max-height for screens larger than 800px */
+      margin: 20px; /* Added margin for screens under 1080px */
+      transform-style: preserve-3d;
+      transform: rotateX(60deg) rotateY(0deg);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5) inset;
+      animation: rotateContainer 40s infinite linear; /* Adjusted animation duration */
+    }
 
-      .rectangle a {
-        text-decoration: none;
-        color: black;
-        transition: all 0.3s ease; /* Smooth transition for hover effect */
+    @keyframes rotateContainer {
+      0% {
+        transform: rotateX(60deg) rotateY(0deg);
       }
-
-      .rectangle:hover a {
-        font-size: 4vw; /* Increase font size on hover */
-        text-transform: uppercase; /* All caps on hover */
-        color: black; /* Change text color on hover */
-        animation: breathe 2s ease-in-out infinite; /* Breathing animation */
+      100% {
+        transform: rotateX(60deg) rotateY(360deg);
       }
+    }
 
-      @keyframes breathe {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
+    .circle {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.3); /* Glass-like effect */
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 100%; /* Adjusted width for responsiveness */
+      height: 100%; /* Adjusted height for responsiveness */
+      border: 1px solid #fff;
+      left: 0;
+      top: 0;
+      transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    }
+
+    .circle:hover {
+      width: 105%; /* Adjusted width for responsiveness */
+      height: 105%; /* Adjusted height for responsiveness */
+    }
+
+    .circle:nth-child(1) {
+      transform: rotateY(0deg) translateZ(20vw);
+    }
+
+    .circle:nth-child(2) {
+      transform: rotateY(45deg) translateZ(20vw);
+    }
+
+    .circle:nth-child(3) {
+      transform: rotateY(90deg) translateZ(20vw);
+    }
+
+    .circle:nth-child(4) {
+      transform: rotateY(135deg) translateZ(20vw);
+    }
+
+    .circle:nth-child(5) {
+      transform: rotateY(180deg) translateZ(20vw);
+    }
+
+    .circle:nth-child(6) {
+      transform: rotateY(225deg) translateZ(20vw);
+    }
+
+    .circle:nth-child(7) {
+      transform: rotateY(270deg) translateZ(20vw);
+    }
+
+    .circle:nth-child(8) {
+      transform: rotateY(315deg) translateZ(20vw);
+    }
+
+    .circle:hover::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      animation: circleAnimation 5s infinite;
+    }
+
+    .circle:hover::before {
+      content: attr(data-text);
+      position: absolute;
+      color: black; /* Set initial label text color */
+      font-size: 4vh;
+      animation: labelAnimation 5s infinite;
+    }
+
+    .label {
+      position: absolute;
+      font-size: 4vh;
+      text-align: center;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: labelAnimation 20s infinite, floatBackForth 10s infinite ease-in-out;
+      opacity: 1; /* Make labels visible */
+    }
+
+    @keyframes labelAnimation {
+      0%, 100% {
+        color: black; /* Label text color transitions from black to #faf9f6 */
       }
-
-      .kick {
-        background-image: url('oval.png');
+      50% {
+        color: #faf9f6; /* Label text color transitions from #faf9f6 to black */
       }
+    }
 
-      .x {
-        background-image: url('oval.png');
+    @keyframes floatBackForth {
+      0%, 100% {
+        transform: translateY(-50%) translateX(0);
       }
-
-      .youtube {
-        background-image: url('oval.png');
+      50% {
+        transform: translateY(-50%) translateX(10px);
       }
+    }
 
-      .contact {
-        background-image: url('oval.png');
+    a.circle {
+      color: black;
+    }
+
+    @keyframes circleAnimation {
+      0% {
+        transform: rotateY(0deg) translateZ(20vw) rotate(0deg);
       }
-
-      .tip {
-        background-image: url('oval.png');
-        margin-bottom: 10%;
+      50% {
+        transform: rotateY(360deg) translateZ(20vw) rotate(180deg);
       }
-
-      @keyframes circleMove {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(50vw, 50vh); }
-        50% { transform: translate(100vw, 0); }
-        75% { transform: translate(50vw, -50vh); }
-        100% { transform: translate(0, 0); }
+      100% {
+        transform: rotateY(0deg) translateZ(20vw) rotate(0deg);
       }
+    }
+  </style>
+</head>
 
-      @media (max-width: 1080px) {
-        .rectangle {
-          margin-top: 7vh;
-          margin: 2vh 0; /* Adjusted margin for mobile-sized screens */
-        }
-      }
-
-      .code {
-        font-size: 2vw;
-      }
-      .footer {
-         font-size: 4vw;
-         position: fixed;
-         left: 0;
-         bottom: 0;
-         width: 100%;
-         color: black;
-         text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="circle"></div>
-    <div class="rectangle kick"><a href="https://kick.com/hyperobject" target="_blank">kick</a></div>
-    <div class="rectangle x"><a href="https://x.com/____hyperobject" target="_blank">X</a></div>
-    <div class="rectangle youtube"><a href="https://www.youtube.com/@____hyperobject" target="_blank">youtube</a></div>
-    <div class="rectangle youtube"><a href="https://soundcloud.com/hyperobjectivityblackmold" target="_blank">soundcloud</a></div>
-    <div class="rectangle youtube"><a href="https://www.instagram.com/hyperobjectivity/" target="_blank">ig</a></div>
-    <div class="rectangle contact"><a href="mailto:hyperobjectivityblackmold@gmail.com" target="_blank">contact</a></div>
-    <div class="rectangle tip"><a href="https://buy.stripe.com/14kaFX8apbh18zC288" target="_blank">gimme monies</a></div>
-
-    <div class="footer"><div>2024 © hyperobject</div>
-    <div class="code">coded by: hyperobject x ChatGPT<br><br></div></div>
-
-  </body>
+<body>
+  <div class="circle-container">
+    <a href="https://kick.com/hyperobject" target="_blank" class="circle" data-text="kick">
+      <div class="label">kick</div>
+    </a>
+    <a href="https://x.com/____hyperobject" target="_blank" class="circle" data-text="X">
+      <div class="label">X</div>
+    </a>
+    <a href="https://www.youtube.com/@____hyperobject" target="_blank" class="circle" data-text="youtube">
+      <div class="label">youtube</div>
+    </a>
+    <a href="https://soundcloud.com/hyperobjectivityblackmold" target="_blank" class="circle" data-text="soundcloud">
+      <div class="label">soundcloud</div>
+    </a>
+    <a href="https://www.instagram.com/hyperobjectivity/" target="_blank" class="circle" data-text="ig">
+      <div class="label">ig</div>
+    </a>
+    <a href="https://tiktok.com/@hyperobjectivity" target="_blank" class="circle" data-text="tiktok">
+      <div class="label">tiktok</div>
+    </a>
+    <a href="https://buy.stripe.com/14kaFX8apbh18zC288" target="_blank" class="circle" data-text="gimmie monies">
+      <div class="label">gimmie monies</div>
+    </a>
+    <a href="https://docs.google.com/document/d/1lUL0e66EVwmjDSFJyfZB2TBBRnsoVztu2zqX8rGKLFE/edit?usp=sharing" target="_blank" class="circle" data-text="ai ethics">
+      <div class="label">ai ethics</div>
+    </a>
+  </div>
+</body>
 </html>
