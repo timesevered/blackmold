@@ -12,7 +12,7 @@
     }
 
     body {
-      background: radial-gradient(circle, black 10%, #faf9f6);
+      background: radial-gradient(circle, #666666 10%, #faf9f6 70%, #ffffff 100%);
       margin: 0;
       display: flex;
       justify-content: center;
@@ -21,27 +21,41 @@
       overflow: hidden;
       font-family: soehne, sans-serif;
       perspective: 1000px;
+      animation: shimmerBackground 10s infinite;
+      position: relative;
+    }
+
+    @keyframes shimmerBackground {
+      0% {
+        background-position: 0% 0%;
+      }
+
+      100% {
+        background-position: 100% 100%;
+      }
     }
 
     .circle-container {
       position: relative;
-      width: 80vw; /* Adjusted width for responsiveness */
-      height: 80vw; /* Adjusted height for responsiveness */
-      max-width: 800px; /* Added max-width for screens larger than 800px */
-      max-height: 800px; /* Added max-height for screens larger than 800px */
-      margin: 20px; /* Added margin for screens under 1080px */
+      width: 80vw;
+      height: 80vw;
+      max-width: 800px;
+      max-height: 800px;
+      margin: 20px;
       transform-style: preserve-3d;
       transform: rotateX(60deg) rotateY(0deg);
       background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
       border-radius: 50%;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5) inset;
-      animation: rotateContainer 40s infinite linear; /* Adjusted animation duration */
+      animation: rotateContainer 40s infinite linear;
+      z-index: 1;
     }
 
     @keyframes rotateContainer {
       0% {
         transform: rotateX(60deg) rotateY(0deg);
       }
+
       100% {
         transform: rotateX(60deg) rotateY(360deg);
       }
@@ -49,11 +63,11 @@
 
     .circle {
       position: absolute;
-      background-color: rgba(255, 255, 255, 0.3); /* Glass-like effect */
+      background-color: rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      width: 100%; /* Adjusted width for responsiveness */
-      height: 100%; /* Adjusted height for responsiveness */
+      width: 100%;
+      height: 100%;
       border: 1px solid #fff;
       left: 0;
       top: 0;
@@ -61,8 +75,8 @@
     }
 
     .circle:hover {
-      width: 105%; /* Adjusted width for responsiveness */
-      height: 105%; /* Adjusted height for responsiveness */
+      width: 105%;
+      height: 105%;
     }
 
     .circle:nth-child(1) {
@@ -109,7 +123,7 @@
     .circle:hover::before {
       content: attr(data-text);
       position: absolute;
-      color: black; /* Set initial label text color */
+      color: black;
       font-size: 4vh;
       animation: labelAnimation 5s infinite;
     }
@@ -122,22 +136,26 @@
       top: 50%;
       transform: translateY(-50%);
       animation: labelAnimation 20s infinite, floatBackForth 10s infinite ease-in-out;
-      opacity: 1; /* Make labels visible */
+      opacity: 1;
     }
 
     @keyframes labelAnimation {
-      0%, 100% {
-        color: black; /* Label text color transitions from black to #faf9f6 */
+      0%,
+      100% {
+        color: black;
       }
+
       50% {
-        color: #faf9f6; /* Label text color transitions from #faf9f6 to black */
+        color: #faf9f6;
       }
     }
 
     @keyframes floatBackForth {
-      0%, 100% {
+      0%,
+      100% {
         transform: translateY(-50%) translateX(0);
       }
+
       50% {
         transform: translateY(-50%) translateX(10px);
       }
@@ -151,9 +169,11 @@
       0% {
         transform: rotateY(0deg) translateZ(20vw) rotate(0deg);
       }
+
       50% {
         transform: rotateY(360deg) translateZ(20vw) rotate(180deg);
       }
+
       100% {
         transform: rotateY(0deg) translateZ(20vw) rotate(0deg);
       }
@@ -167,16 +187,18 @@
       width: 100%;
       color: black;
       text-align: center;
-      z-index: -1; /* Adjusted z-index to position behind circle container */
-      animation: footerAnimation 20s infinite; /* Added animation to the footer text */
+      z-index: -1;
+      animation: footerAnimation 20s infinite;
     }
 
     @keyframes footerAnimation {
-      0%, 100% {
-        color: black; /* Footer text color transitions from black to #faf9f6 */
+      0%,
+      100% {
+        color: black;
       }
+
       50% {
-        color: #faf9f6; /* Footer text color transitions from #faf9f6 to black */
+        color: #faf9f6;
       }
     }
 
@@ -184,11 +206,30 @@
       font-size: 2vw;
     }
 
+    /* Small Green Mold */
+    .small-green-mold {
+      position: absolute;
+      background: radial-gradient(circle, rgba(226, 223, 210, 0) 10%, rgba(226, 223, 210, 0.8) 70%, rgba(226, 223, 210, 1) 100%);
+      border-radius: 50%;
+      animation: growShrinkSmallGreenMold 10s infinite;
+      z-index: 0;
+    }
+
+    @keyframes growShrinkSmallGreenMold {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.5);
+      }
+    }
   </style>
 </head>
 
 <body>
-<div class="circle-container">
+  <div class="circle-container">
     <a href="https://kick.com/hyperobject" target="_blank" class="circle" data-text="kick">
       <div class="label">kick</div>
     </a>
@@ -196,28 +237,62 @@
       <div class="label">X</div>
     </a>
     <a href="https://www.youtube.com/@____hyperobject" target="_blank" class="circle" data-text="youtube">
-<div class="label">youtube</div>
-</a>
-<a href="https://soundcloud.com/hyperobjectivityblackmold" target="_blank" class="circle" data-text="soundcloud">
-<div class="label">soundcloud</div>
-</a>
-<a href="https://www.instagram.com/hyperobjectivity/" target="_blank" class="circle" data-text="ig">
-<div class="label">ig</div>
-</a>
-<a href="https://tiktok.com/@hyperobjectivity" target="_blank" class="circle" data-text="tiktok">
-<div class="label">tiktok</div>
-</a>
-<a href="https://buy.stripe.com/14kaFX8apbh18zC288" target="_blank" class="circle" data-text="gimmie monies">
-<div class="label">gimmie monies</div>
-</a>
-<a href="https://docs.google.com/document/d/1lUL0e66EVwmjDSFJyfZB2TBBRnsoVztu2zqX8rGKLFE/edit?usp=sharing" target="_blank" class="circle" data-text="ai ethics">
-<div class="label">ai ethics</div>
-</a>
-
+      <div class="label">youtube</div>
+    </a>
+    <a href="https://soundcloud.com/hyperobjectivityblackmold" target="_blank" class="circle" data-text="soundcloud">
+      <div class="label">soundcloud</div>
+    </a>
+    <a href="https://www.instagram.com/hyperobjectivity/" target="_blank" class="circle" data-text="ig">
+      <div class="label">ig</div>
+    </a>
+    <a href="https://tiktok.com/@hyperobjectivity" target="_blank" class="circle" data-text="tiktok">
+      <div class="label">tiktok</div>
+    </a>
+    <a href="https://buy.stripe.com/14kaFX8apbh18zC288" target="_blank" class="circle" data-text="gimmie monies">
+      <div class="label">gimmie monies</div>
+    </a>
+    <a href="https://docs.google.com/document/d/1lUL0e66EVwmjDSFJyfZB2TBBRnsoVztu2zqX8rGKLFE/edit?usp=sharing" target="_blank" class="circle" data-text="ai ethics">
+      <div class="label">ai ethics</div>
+    </a>
   </div>
   <div class="footer">
     2024 © hyperobject <br>
     <div class="code">coded by: hyperobject x ChatGPT<br><br></div>
   </div>
+
+  <script>
+    // Function to create and append a small green mold to the body
+    function createSmallGreenMold() {
+      const body = document.body;
+      const mold = document.createElement('div');
+      mold.className = 'small-green-mold';
+
+      // Random size for the mold
+      const size = Math.random() * 40 + 10; // Size between 10px and 50px
+      mold.style.width = `${size}px`;
+      mold.style.height = `${size}px`;
+
+      // Random position for the mold
+      const posX = Math.random() * window.innerWidth;
+      const posY = Math.random() * window.innerHeight;
+      mold.style.left = `${posX}px`;
+      mold.style.top = `${posY}px`;
+
+      // Ensure mold is behind the circle container
+      body.insertBefore(mold, document.querySelector('.circle-container'));
+    }
+
+    // Function to sporadically create molds over time
+    function sporadicMoldGrowth() {
+      createSmallGreenMold();
+      // Random interval between 500ms to 2000ms
+      const interval = Math.random() * 1500 + 500;
+      setTimeout(sporadicMoldGrowth, interval);
+    }
+
+    // Start the sporadic mold growth
+    sporadicMoldGrowth();
+  </script>
 </body>
+
 </html>
