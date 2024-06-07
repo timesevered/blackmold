@@ -7,9 +7,9 @@
   <title>hyperobject</title>
   <style>
     @font-face {
-   font-family: soehne;
-   src: url(soehne-web-buch.woff);
-  }
+      font-family: soehne;
+      src: url(soehne-web-buch.woff);
+    }
 
     body {
       background: radial-gradient(circle, black 10%, #faf9f6);
@@ -158,11 +158,37 @@
         transform: rotateY(0deg) translateZ(20vw) rotate(0deg);
       }
     }
+
+    .footer {
+      font-size: 3vw;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      color: black;
+      text-align: center;
+      z-index: -1; /* Adjusted z-index to position behind circle container */
+      animation: footerAnimation 20s infinite; /* Added animation to the footer text */
+    }
+
+    @keyframes footerAnimation {
+      0%, 100% {
+        color: black; /* Footer text color transitions from black to #faf9f6 */
+      }
+      50% {
+        color: #faf9f6; /* Footer text color transitions from #faf9f6 to black */
+      }
+    }
+
+    .code {
+      font-size: 2vw;
+    }
+
   </style>
 </head>
 
 <body>
-  <div class="circle-container">
+<div class="circle-container">
     <a href="https://kick.com/hyperobject" target="_blank" class="circle" data-text="kick">
       <div class="label">kick</div>
     </a>
@@ -170,23 +196,28 @@
       <div class="label">X</div>
     </a>
     <a href="https://www.youtube.com/@____hyperobject" target="_blank" class="circle" data-text="youtube">
-      <div class="label">youtube</div>
-    </a>
-    <a href="https://soundcloud.com/hyperobjectivityblackmold" target="_blank" class="circle" data-text="soundcloud">
-      <div class="label">soundcloud</div>
-    </a>
-    <a href="https://www.instagram.com/hyperobjectivity/" target="_blank" class="circle" data-text="ig">
-      <div class="label">ig</div>
-    </a>
-    <a href="https://tiktok.com/@hyperobjectivity" target="_blank" class="circle" data-text="tiktok">
-      <div class="label">tiktok</div>
-    </a>
-    <a href="https://buy.stripe.com/14kaFX8apbh18zC288" target="_blank" class="circle" data-text="gimmie monies">
-      <div class="label">gimmie monies</div>
-    </a>
-    <a href="https://docs.google.com/document/d/1lUL0e66EVwmjDSFJyfZB2TBBRnsoVztu2zqX8rGKLFE/edit?usp=sharing" target="_blank" class="circle" data-text="ai ethics">
-      <div class="label">ai ethics</div>
-    </a>
+<div class="label">youtube</div>
+</a>
+<a href="https://soundcloud.com/hyperobjectivityblackmold" target="_blank" class="circle" data-text="soundcloud">
+<div class="label">soundcloud</div>
+</a>
+<a href="https://www.instagram.com/hyperobjectivity/" target="_blank" class="circle" data-text="ig">
+<div class="label">ig</div>
+</a>
+<a href="https://tiktok.com/@hyperobjectivity" target="_blank" class="circle" data-text="tiktok">
+<div class="label">tiktok</div>
+</a>
+<a href="https://buy.stripe.com/14kaFX8apbh18zC288" target="_blank" class="circle" data-text="gimmie monies">
+<div class="label">gimmie monies</div>
+</a>
+<a href="https://docs.google.com/document/d/1lUL0e66EVwmjDSFJyfZB2TBBRnsoVztu2zqX8rGKLFE/edit?usp=sharing" target="_blank" class="circle" data-text="ai ethics">
+<div class="label">ai ethics</div>
+</a>
+
+  </div>
+  <div class="footer">
+    2024 © hyperobject <br>
+    <div class="code">coded by: hyperobject x ChatGPT<br><br></div>
   </div>
 </body>
 </html>
