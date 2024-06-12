@@ -129,6 +129,33 @@
         margin-bottom: 20px;
       }
     }
+
+    .footer {
+      font-size: 2vh;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      color: black;
+      text-align: center;
+      z-index: -1;
+      animation: footerAnimation 20s infinite;
+    }
+
+    @keyframes footerAnimation {
+      0%,
+      100% {
+        color: black;
+      }
+
+      50% {
+        color: #faf9f6;
+      }
+    }
+
+    .code {
+      font-size: 1.5vh;
+    }
   </style>
 </head>
 
@@ -140,6 +167,11 @@
     <div class="circle-container">
       <div class="circle" onclick="generateDirection()"></div>
     </div>
+  </div>
+
+    <div class="footer">
+    2024 © hyperobject <br>
+    <div class="code">coded on 06112024 by: hyperobject x ChatGPT<br><br></div>
   </div>
 
   <script>
