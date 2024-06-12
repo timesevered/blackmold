@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>left or straight</title>
+  <title>hori \ vert</title>
   <style>
     @font-face {
       font-family: soehne;
@@ -22,7 +22,7 @@
       margin: 0;
     }
 
-     @keyframes shimmerBackground {
+    @keyframes shimmerBackground {
       0% {
         background-position: 0% 0%;
       }
@@ -32,47 +32,45 @@
       }
     }
 
-  .container {
-    width: 100vh;
-    height: 100vh;
+    .container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-    margin: auto; /* Center the container horizontally */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center the container vertically */
-    align-items: center;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.5) inset;
-  }
+    #direction-container,
+    .circle-container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; /* Added */
+    }
 
-  #direction {
-  font-size: 10vh;
-  margin-bottom: 10%;
-  margin-left: 10px;
-  margin-right: 10px;
-  opacity: 0;
-  position: relative;
-  color: #faf9f6;
-}
+    #direction {
+      font-size: 10vh;
+      margin-bottom: 10%;
+      opacity: 0;
+      position: relative;
+      color: #faf9f6;
+    }
 
-.circle {
-  background-color: transparent;
-  width: 5vh;
-  height: 5vh;
-  max-width: 3vh; /* Maximum width to prevent overflow */
-  max-height: 3vh; /* Maximum height to prevent overflow */
-  border-radius: 50%; /* Ensures it stays a perfect circle */
-  cursor: crosshair;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: breathe 4s infinite alternate;
-  box-shadow: 0 0 20px rgba(250, 249, 246, 0.5); /* Add drop shadow */
-  margin-bottom: 10px; /* Add margin bottom to keep button within frame */
-}
-
+    .circle {
+      background-color: transparent;
+      width: 5vh;
+      height: 5vh;
+      max-width: 4vh;
+      max-height: 4vh;
+      border-radius: 50%;
+      cursor: crosshair;
+      animation: breathe 4s infinite alternate;
+      box-shadow: 0 0 20px rgba(250, 249, 246, 0.5);
+      margin-bottom: 10px;
+    }
 
     @keyframes breathe {
       0% {
@@ -84,7 +82,7 @@
     }
 
     button {
-      display: none; /* Hide the button */
+      display: none;
     }
 
     sup {
@@ -96,8 +94,8 @@
       border-radius: 50%;
       font-size: 0.8rem;
       color: #faf9f6;
-       box-shadow: 0 0 20px rgba(250, 249, 246, 0.8); /* Add drop shadow */
-    } 
+      box-shadow: 0 0 20px rgba(250, 249, 246, 0.8);
+    }
 
     .fade-in-text {
       animation: fadeInText 3s forwards;
@@ -112,13 +110,37 @@
         opacity: 1;
       }
     }
+
+    @media (min-width: 600px) {
+      .container {
+        flex-direction: row;
+      }
+
+      #direction-container,
+      .circle-container {
+        width: 50%;
+      }
+
+      #direction {
+        font-size: 20vh;
+        margin-bottom: 0;
+      }
+
+      .circle {
+        margin-bottom: 20px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <div id="direction"></div>
-    <div class="circle" onclick="generateDirection()"></div> <!-- Black circle -->
+    <div id="direction-container">
+      <div id="direction"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle" onclick="generateDirection()"></div>
+    </div>
   </div>
 
   <script>
@@ -150,4 +172,5 @@
     window.onload = generateDirection;
   </script>
 </body>
+
 </html>
