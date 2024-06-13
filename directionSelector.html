@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>hori \ vert</title>
+  <title>directionSelector</title>
   <style>
     @font-face {
       font-family: soehne;
@@ -129,6 +129,17 @@
       }
     }
 
+    @media (min-width: 1080px) {
+      #direction {
+        font-size: 40vh;
+      }
+
+      .circle {
+        width: 7vh;
+        height: 7vh;
+      }
+    }
+
     .footer {
       font-size: 2vh;
       position: fixed;
@@ -200,6 +211,14 @@
 
     // Generate a random direction when the page loads
     window.onload = generateDirection;
+
+    // Add event listener for spacebar key press
+    document.addEventListener('keydown', function(event) {
+      if (event.code === 'Space') {
+        event.preventDefault();
+        generateDirection();
+      }
+    });
   </script>
 </body>
 
